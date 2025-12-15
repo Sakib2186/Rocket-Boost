@@ -4,10 +4,12 @@ public class Movement : MonoBehaviour
 {
 
     [SerializeField] InputAction thrust;
+    [SerializeField] float thrustStength;
+    Rigidbody rb;
 
-    private void Awake()
+    private void Start()
     {
-        gameObject.SetActive(false);
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
@@ -15,16 +17,18 @@ public class Movement : MonoBehaviour
         thrust.Enable();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (Time.time > 3.0f)
-        {
-            gameObject.SetActive(true);
-        }
         if (thrust.IsPressed())
         {
-            Debug.Log("Thrust has been pressed");
+            Debug.Log("Here1");
+            moverocket();
         }
+    }
+
+    void moverocket()
+    {
+        rb.AddRelativeForce(Vector3.up * thrustStength * Time.fixedDeltaTime);
     }
 
 }
