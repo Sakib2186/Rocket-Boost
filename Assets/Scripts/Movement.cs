@@ -4,6 +4,7 @@ public class Movement : MonoBehaviour
 {
 
     [SerializeField] InputAction thrust;
+    [SerializeField] InputAction rotation;
     [SerializeField] float thrustStength;
     Rigidbody rb;
 
@@ -15,20 +16,29 @@ public class Movement : MonoBehaviour
     private void OnEnable()
     {
         thrust.Enable();
+        rotation.Enable();
     }
 
     private void FixedUpdate()
     {
-        if (thrust.IsPressed())
-        {
-            Debug.Log("Here1");
-            moverocket();
-        }
+
+        ProcessThrusting();
+        ProcessRotation();
+
     }
 
-    void moverocket()
+    private void ProcessThrusting()
     {
-        rb.AddRelativeForce(Vector3.up * thrustStength * Time.fixedDeltaTime);
+        if (thrust.IsPressed())
+        {
+            rb.AddRelativeForce(Vector3.up * thrustStength * Time.fixedDeltaTime);
+        }
+
+    }
+    private void ProcessRotation()
+    {
+        float rotationInput = rotation.ReadValue<float>();
+        transform.Translate(1f * rotationInput * Time.fixedDeltaTime, 0f, 0f);
     }
 
 }
