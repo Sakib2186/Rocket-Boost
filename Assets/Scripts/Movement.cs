@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
@@ -11,8 +12,16 @@ public class Movement : MonoBehaviour
     [SerializeField] ParticleSystem rocketThrust;
     [SerializeField] ParticleSystem leftThrust;
     [SerializeField] ParticleSystem rightThrust;
+    GameObject SunLight;
+    Light sun;
     AudioSource ads;
     Rigidbody rb;
+
+    private void Awake()
+    {
+        SunLight = GameObject.FindGameObjectWithTag("Sun");
+        sun = SunLight.GetComponent<Light>();
+    }
 
 
     private void Start()
@@ -32,6 +41,7 @@ public class Movement : MonoBehaviour
 
         ProcessThrusting();
         ProcessRotation();
+        RotateSun();
 
     }
 
@@ -127,6 +137,11 @@ public class Movement : MonoBehaviour
         {
             ads.PlayOneShot(mainEngineSFX);
         }
+    }
+
+    private void RotateSun()
+    {
+        sun.transform.Rotate(1f * Time.fixedDeltaTime * 15f, 0f, 0f );
     }
 
 }
