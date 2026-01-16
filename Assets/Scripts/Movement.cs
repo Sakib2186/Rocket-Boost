@@ -1,6 +1,7 @@
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+
 public class Movement : MonoBehaviour
 {
 
@@ -141,7 +142,11 @@ public class Movement : MonoBehaviour
 
     private void RotateSun()
     {
-        sun.transform.Rotate(1f * Time.fixedDeltaTime * 15f, 0f, 0f );
+        string current_scene_name = SceneManager.GetActiveScene().name;
+        if (current_scene_name == "Last")
+        {
+            sun.transform.Rotate(1f * Time.fixedDeltaTime * 15f, 0f, 0f );
+        }
     }
 
 }

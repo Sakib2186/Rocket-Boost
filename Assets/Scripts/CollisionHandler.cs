@@ -12,7 +12,7 @@ public class CollisionHandler : MonoBehaviour
     AudioSource ads;
 
     bool isControllable = true;
-    bool isCollidable = true;
+    public static bool isCollidable = true;
 
     private void Start()
     {
