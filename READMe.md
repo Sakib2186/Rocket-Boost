@@ -2,6 +2,8 @@
 
 Space Voyage is a small 3D space exploration game built with Unity, set in a dark and mysterious galaxy that was once home to an advanced civilization. The game challenges players to navigate through space, avoid obstacles, and safely land on designated platforms to progress through levels.
 
+You can play the game by downloading it from the 'Build' folder for your desire OS.
+
 ## :video_game: Game Overview
 - Engine: Unity (3D)
 - Language: C#
