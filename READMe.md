@@ -38,7 +38,7 @@ The game can be enhanced further by adding:
 - Advanced obstacle patterns and moving hazards
 - Fuel or time-based challenges
 
-## :video_camera: Videos:
+## :video_camera: Video:
 
 https://github.com/user-attachments/assets/21767d6d-bc46-4e05-aff7-1422eed9659e
 
